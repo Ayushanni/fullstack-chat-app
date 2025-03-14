@@ -74,7 +74,13 @@ function ChatContainer() {
                 {formatMessageTime(message.createdAt)}
               </time>
             </div>
-            <div className="chat-bubble flex flex-col">
+            <div
+              className={`chat-bubble flex flex-col p-3 shadow-md rounded-lg ${
+                message.senderId === authUser._id
+                  ? "bg-primary text-primary-content" // Sent messages
+                  : "bg-base-200 text-base-content" // Received messages
+              }`}
+            >
               {message.image && (
                 <img
                   src={message.image}
